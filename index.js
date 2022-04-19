@@ -11,67 +11,59 @@ const questions = [
         type: "input",
         name: "username"
     },
-    //1
+
      {
         message: "what is your email addess?" ,
         type: "input",
         name: "email"
     }, 
-     //2
+
      {
         message: "What is your project's name?" ,
         type: "input",
         name: "title"
      },
-     //3
-     "Please write a short description of your project:" , 
+
      {
-        type: "list",
-        message: "What kind of license should your project have?",
-        choices: ["MIT"],
-        name: "license"
+         message: "Please write a short description of your project:" ,
+         type: "input" ,
+         name: "description"
+    }, 
+
+     {
+        type: 'list',
+        name: 'license',
+        message: 'What kind of license should your project have?',
+        choices: ['MIT', 'APACHE 2.0', 'GPL 3.0', 'BSD 3', 'None'],
         
     },
-   //4
+
     {
-        message: "what does the user need to know about using the repo" ,
+        message: "please put in a url for a video or picture" ,
         type: "input" ,
-        name: "description"
+        name: "visuals"
     }, 
-    //5
+
     {
         message: "what does the user need to know about contributing to the repo?",
         type: "input",
         name: "contribution"
     }
+    
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    console.log("Making ReadMe...")
+    fs.writeFile(fileName ,generateMarkdown(data , "null" , "\t" , (err) => {if (err) throw err}));
+}
 
 // TODO: Create a function to initialize app
 function init() {
-    inquirer
-  .prompt([
-
-
-  ])
-  .then((answers) => {
-      let fileName = `${answers.name.toLowerCase().split().join("")}${".json"}`
-    // Use user feedback for... whatever!!
-    fs.writeFile(fileName, JSON.stringify(answers , "null" , "\t") , (err) => {
-        if (err) throw err;
-    })
-  })
-  .catch((error) => {
-    if (error.isTtyError) {
-      // Prompt couldn't be rendered in the current environment
-    } else {
-      // Something else went wrong
-    }
-  });
-
+    inquirer.prompt(questions)
+        .then((answers) => {writeToFile("README.md" , answers)})
 }
 
 // Function call to initialize app
 init();
+
