@@ -38,26 +38,32 @@ function generateMarkdown(data) {
 
   return `# ${title}
 
-  ##Table of Content
+  ## Table of Content
   -[description](#description)
+
   -[visuals](#visuals)
+
   -[contribution](#contribution)
+
   -[license](#license)
+
   -[email](#email)
+
   -[username](#username)
+
   ${licenseBadge}
 
-  ##username: ${description}
+  ## username: ${description}
 
-  ##visuals:
+  ## visuals:
 
   ${visuals}
 
-  ##contribution: ${contribution}
+  ## contribution: ${contribution}
 
-  ##email: ${email}
+  ## email: ${email}
 
-  ##username: ${username}
+  ## username: ${username}
   
 `;
 }
