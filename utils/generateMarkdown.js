@@ -71,7 +71,7 @@ function generateMarkdown(data) {
   
   ## Visuals
 
-  ${visuals}
+  ![visuals](${visuals})
   ${licenseSelection}
   
   ## Questions
