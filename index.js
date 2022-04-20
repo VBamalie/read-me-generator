@@ -5,7 +5,6 @@ const inquirer = require("inquirer");
 const generateMarkdown =  require("./utils/generateMarkdown");
 // TODO: Create an array of questions for user input
 const questions = [
-    //0
     {
         message: "What is your GitHub username?",
         type: "input",
@@ -48,6 +47,11 @@ const questions = [
         message: "what does the user need to know about contributing to the repo?",
         type: "input",
         name: "contribution"
+    },
+    {
+        message: "What do you need to install.",
+        type: "input",
+        name: "install"
     }
     
 ];
@@ -63,7 +67,6 @@ function init() {
     inquirer.prompt(questions)
         .then((answers) => {writeToFile("README.md" , generateMarkdown({...answers
         }))})
-        
 }
 
 // Function call to initialize app
